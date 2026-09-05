@@ -143,3 +143,4 @@ For the requested screen recording, demonstrate this sequence:
 3. Open the viewer and show populated sections and artwork.
 4. Search for a title or category.
 5. Open a show detail page and switch between Season 1 and Trailers & Extras.
+# peblo
