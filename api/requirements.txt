@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+sqlalchemy
+alembic
+psycopg2-binary
+pytest
+httpx
+python-multipart
+pydantic
+pydantic-settings
+Pillow
+PyJWT
+passlib[bcrypt]
+bcrypt<5

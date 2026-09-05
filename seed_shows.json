@@ -1,0 +1,82 @@
+[
+  {
+    "id": "show_1",
+    "title": "Adventures in Space",
+    "section": "Featured",
+    "category": "Animation",
+    "status": "published",
+    "seasons": [
+      {
+        "id": "s1_0",
+        "season_number": 0,
+        "episodes": [
+          {
+            "id": "ep_1_0_1",
+            "title": "Season 1 Trailer",
+            "content_group": "cg_trailer_1",
+            "language": "en",
+            "duration": 120,
+            "artwork": {
+              "poster": "assets/poster1.jpg",
+              "thumbnail": "assets/thumb1.jpg",
+              "banner": "assets/banner1.jpg"
+            }
+          }
+        ]
+      },
+      {
+        "id": "s1_1",
+        "season_number": 1,
+        "episodes": [
+          {
+            "id": "ep_1_1_1_en",
+            "title": "The Journey Begins",
+            "content_group": "cg_ep1",
+            "language": "en",
+            "duration": 1400,
+            "artwork": {
+              "poster": "assets/poster2.jpg",
+              "thumbnail": "assets/thumb2.jpg",
+              "banner": "assets/banner2.jpg"
+            }
+          },
+          {
+            "id": "ep_1_1_1_hi",
+            "title": "The Journey Begins (Hindi)",
+            "content_group": "cg_ep1",
+            "language": "hi",
+            "duration": 1400,
+            "artwork": {
+              "poster": "assets/poster2.jpg",
+              "thumbnail": "assets/thumb2.jpg",
+              "banner": "assets/banner2.jpg"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "show_2",
+    "title": "Learning Math",
+    "section": "Educational",
+    "category": "Interactive",
+    "status": "draft",
+    "seasons": [
+      {
+        "id": "s2_1",
+        "season_number": 1,
+        "episodes": [
+          {
+            "id": "ep_2_1_1",
+            "title": "Addition",
+            "content_group": "cg_ep2_1",
+            "language": "en",
+            "duration": null, 
+            "artwork": null
+          }
+        ]
+      }
+    ]
+  }
+]

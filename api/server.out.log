@@ -1,0 +1,13 @@
+INFO:     127.0.0.1:50903 - "GET /admin/shows?status_filter=published&language=en HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65219 - "GET /admin/publish-runs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65220 - "GET /catalog/search?category=Sci-Fi&language=en HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61960 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62038 - "GET /admin/shows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63851 - "GET /catalog HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63851 - "GET /catalog HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60054 - "OPTIONS /admin/shows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60054 - "GET /admin/shows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60054 - "GET /admin/shows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53331 - "GET /admin/shows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65371 - "GET /admin/shows/show-1788585689907/seasons HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54165 - "GET /admin/shows/show-1788585689907 HTTP/1.1" 404 Not Found

@@ -1,0 +1,251 @@
+{
+  "sections": {
+    "Featured": [
+      {
+        "id": "dummy_show_0",
+        "title": "Space Rangers",
+        "category": "Sci-Fi",
+        "seasons": [
+          {
+            "id": "dummy_s0_0",
+            "season_number": 0,
+            "episodes": [
+              {
+                "id": "ep_trailer_0",
+                "title": "Space Rangers Trailer",
+                "content_group": "cg_trailer_0",
+                "languages": [
+                  "en"
+                ],
+                "duration": 120,
+                "artwork": {
+                  "poster": "artwork/ep_trailer_0/poster.jpg",
+                  "banner": "artwork/ep_trailer_0/banner.jpg",
+                  "thumbnail": "artwork/ep_trailer_0/thumbnail.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "id": "dummy_s1_0",
+            "season_number": 1,
+            "episodes": [
+              {
+                "id": "ep1_0_es",
+                "title": "El Comienzo",
+                "content_group": "cg_ep1_0",
+                "languages": [
+                  "es",
+                  "en"
+                ],
+                "duration": 1400,
+                "artwork": {
+                  "poster": "artwork/ep1_0_es/poster.jpg",
+                  "banner": "artwork/ep1_0_es/banner.jpg",
+                  "thumbnail": "artwork/ep1_0_es/thumbnail.jpg"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dummy_show_2",
+        "title": "Mountain High",
+        "category": "Action",
+        "seasons": [
+          {
+            "id": "dummy_s0_2",
+            "season_number": 0,
+            "episodes": [
+              {
+                "id": "ep_trailer_2",
+                "title": "Mountain High Trailer",
+                "content_group": "cg_trailer_2",
+                "languages": [
+                  "en"
+                ],
+                "duration": 120,
+                "artwork": {
+                  "poster": "artwork/ep_trailer_2/poster.jpg",
+                  "banner": "artwork/ep_trailer_2/banner.jpg",
+                  "thumbnail": "artwork/ep_trailer_2/thumbnail.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "id": "dummy_s1_2",
+            "season_number": 1,
+            "episodes": [
+              {
+                "id": "ep1_2_es",
+                "title": "El Comienzo",
+                "content_group": "cg_ep1_2",
+                "languages": [
+                  "es",
+                  "en"
+                ],
+                "duration": 1400,
+                "artwork": {
+                  "poster": "artwork/ep1_2_es/poster.jpg",
+                  "banner": "artwork/ep1_2_es/banner.jpg",
+                  "thumbnail": "artwork/ep1_2_es/thumbnail.jpg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Trending": [
+      {
+        "id": "dummy_show_1",
+        "title": "Ocean Deep",
+        "category": "Documentary",
+        "seasons": [
+          {
+            "id": "dummy_s0_1",
+            "season_number": 0,
+            "episodes": [
+              {
+                "id": "ep_trailer_1",
+                "title": "Ocean Deep Trailer",
+                "content_group": "cg_trailer_1",
+                "languages": [
+                  "en"
+                ],
+                "duration": 120,
+                "artwork": {
+                  "poster": "artwork/ep_trailer_1/poster.jpg",
+                  "banner": "artwork/ep_trailer_1/banner.jpg",
+                  "thumbnail": "artwork/ep_trailer_1/thumbnail.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "id": "dummy_s1_1",
+            "season_number": 1,
+            "episodes": [
+              {
+                "id": "ep1_1_es",
+                "title": "El Comienzo",
+                "content_group": "cg_ep1_1",
+                "languages": [
+                  "es",
+                  "en"
+                ],
+                "duration": 1400,
+                "artwork": {
+                  "poster": "artwork/ep1_1_es/poster.jpg",
+                  "banner": "artwork/ep1_1_es/banner.jpg",
+                  "thumbnail": "artwork/ep1_1_es/thumbnail.jpg"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dummy_show_4",
+        "title": "Desert Storm",
+        "category": "Thriller",
+        "seasons": [
+          {
+            "id": "dummy_s0_4",
+            "season_number": 0,
+            "episodes": [
+              {
+                "id": "ep_trailer_4",
+                "title": "Desert Storm Trailer",
+                "content_group": "cg_trailer_4",
+                "languages": [
+                  "en"
+                ],
+                "duration": 120,
+                "artwork": {
+                  "poster": "artwork/ep_trailer_4/poster.jpg",
+                  "banner": "artwork/ep_trailer_4/banner.jpg",
+                  "thumbnail": "artwork/ep_trailer_4/thumbnail.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "id": "dummy_s1_4",
+            "season_number": 1,
+            "episodes": [
+              {
+                "id": "ep1_4_es",
+                "title": "El Comienzo",
+                "content_group": "cg_ep1_4",
+                "languages": [
+                  "es",
+                  "en"
+                ],
+                "duration": 1400,
+                "artwork": {
+                  "poster": "artwork/ep1_4_es/poster.jpg",
+                  "banner": "artwork/ep1_4_es/banner.jpg",
+                  "thumbnail": "artwork/ep1_4_es/thumbnail.jpg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "New Releases": [
+      {
+        "id": "dummy_show_3",
+        "title": "City Lights",
+        "category": "Drama",
+        "seasons": [
+          {
+            "id": "dummy_s0_3",
+            "season_number": 0,
+            "episodes": [
+              {
+                "id": "ep_trailer_3",
+                "title": "City Lights Trailer",
+                "content_group": "cg_trailer_3",
+                "languages": [
+                  "en"
+                ],
+                "duration": 120,
+                "artwork": {
+                  "poster": "artwork/ep_trailer_3/poster.jpg",
+                  "banner": "artwork/ep_trailer_3/banner.jpg",
+                  "thumbnail": "artwork/ep_trailer_3/thumbnail.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "id": "dummy_s1_3",
+            "season_number": 1,
+            "episodes": [
+              {
+                "id": "ep1_3_es",
+                "title": "El Comienzo",
+                "content_group": "cg_ep1_3",
+                "languages": [
+                  "es",
+                  "en"
+                ],
+                "duration": 1400,
+                "artwork": {
+                  "poster": "artwork/ep1_3_es/poster.jpg",
+                  "banner": "artwork/ep1_3_es/banner.jpg",
+                  "thumbnail": "artwork/ep1_3_es/thumbnail.jpg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "published_at": "2026-09-05T16:47:50.061463"
+}

@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: peblo_tv
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d peblo_tv"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  init-db:
+    build:
+      context: ./api
+    command: python -m api.seed_db
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db/peblo_tv
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./api:/workspace/api
+
+
+  api:
+    build: 
+      context: ./api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db/peblo_tv
+    depends_on:
+      - db
+    volumes:
+      - ./api:/workspace/api
+
+  cms:
+    build:
+      context: ./cms
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - api
+    volumes:
+      - ./cms:/app
+
+  viewer:
+    build:
+      context: ./viewer
+    ports:
+      - "5174:5174"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - api
+    volumes:
+      - ./viewer:/app
+
+volumes:
+  postgres_data:

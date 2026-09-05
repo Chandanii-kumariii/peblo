@@ -1,0 +1,45 @@
+{
+  "sections": [
+    "Featured",
+    "Trending",
+    "New Releases",
+    "Kids",
+    "Educational"
+  ],
+  "categories": [
+    "Animation",
+    "Live Action",
+    "Documentary",
+    "Interactive"
+  ],
+  "languages": [
+    "en",
+    "hi",
+    "es",
+    "fr"
+  ],
+  "artwork_specs": {
+    "poster": {
+      "aspect_ratio": "2:3",
+      "width_min": 600,
+      "height_min": 900,
+      "max_size_kb": 200
+    },
+    "banner": {
+      "aspect_ratio": "16:9",
+      "width_min": 1280,
+      "height_min": 720,
+      "max_size_kb": 200
+    },
+    "thumbnail": {
+      "aspect_ratio": "16:9",
+      "width_min": 640,
+      "height_min": 360,
+      "max_size_kb": 200
+    }
+  },
+  "conventions": {
+    "season_0_is_trailers": true,
+    "group_by_content_group": true
+  }
+}
