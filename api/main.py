@@ -1,21 +1,37 @@
-from fastapi import FastAPI, Depends, HTTPException, status, UploadFile, File, Form, Header
-from fastapi.staticfiles import StaticFiles
-from sqlalchemy.orm import Session
-from sqlalchemy import text
-from typing import List
 import os
-from PIL import Image
+from datetime import timedelta
 from io import BytesIO
-from . import models, schemas
-from .database import engine, get_db
-from .storage import storage
+from typing import Annotated
 
+import jwt
+from fastapi import (
+    Depends,
+    FastAPI,
+    File,
+    Form,
+    Header,
+    HTTPException,
+    UploadFile,
+    status,
+)
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
-from .auth import create_access_token, verify_password, get_password_hash, SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
-import jwt
-from datetime import timedelta
-from typing import Annotated
+from fastapi.staticfiles import StaticFiles
+from PIL import Image
+from sqlalchemy import text
+from sqlalchemy.orm import Session
+
+from . import models, schemas
+from .auth import (
+    ACCESS_TOKEN_EXPIRE_MINUTES,
+    ALGORITHM,
+    SECRET_KEY,
+    create_access_token,
+    get_password_hash,
+    verify_password,
+)
+from .database import engine, get_db
+from .storage import storage
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -93,7 +109,7 @@ def health_check(db: Session = Depends(get_db)):
     try:
         db.execute(text("SELECT 1"))
     except Exception as e:
-        raise HTTPException(status_code=503, detail=f"Database connection failed: {str(e)}")
+        raise HTTPException(status_code=503, detail=f"Database connection failed: {e!s}")
 
     # 2. Check Storage Reachability
     if not os.path.exists(storage.base_dir) or not os.access(storage.base_dir, os.W_OK):
@@ -103,7 +119,7 @@ def health_check(db: Session = Depends(get_db)):
 
 # --- SHOWS ---
 
-@app.get("/admin/shows", response_model=List[schemas.ShowResponse])
+@app.get("/admin/shows", response_model=list[schemas.ShowResponse])
 def read_shows(
     skip: int = 0,
     limit: int = 100,
@@ -164,7 +180,7 @@ def update_show(show_id: str, show: schemas.ShowCreate, db: Session = Depends(ge
 
 # --- SEASONS ---
 
-@app.get("/admin/shows/{show_id}/seasons", response_model=List[schemas.SeasonResponse])
+@app.get("/admin/shows/{show_id}/seasons", response_model=list[schemas.SeasonResponse])
 def read_seasons(show_id: str, db: Session = Depends(get_db), _: str = Depends(require_editor_role)):
     seasons = db.query(models.Season).filter(models.Season.show_id == show_id).order_by(models.Season.season_number).all()
     return seasons
@@ -179,7 +195,7 @@ def create_season(season: schemas.SeasonCreate, db: Session = Depends(get_db), _
 
 # --- EPISODES ---
 
-@app.get("/admin/seasons/{season_id}/episodes", response_model=List[schemas.EpisodeResponse])
+@app.get("/admin/seasons/{season_id}/episodes", response_model=list[schemas.EpisodeResponse])
 def read_episodes(season_id: str, db: Session = Depends(get_db), _: str = Depends(require_editor_role)):
     episodes = db.query(models.Episode).filter(models.Episode.season_id == season_id).order_by(models.Episode.title, models.Episode.language).all()
     return episodes
@@ -325,7 +341,8 @@ def get_validation_report(db: Session = Depends(get_db), _: str = Depends(requir
 
 import json
 import tempfile
-from datetime import datetime
+from datetime import datetime, timezone
+
 
 @app.post("/admin/catalog/publish")
 def publish_catalog(user_id: str = "admin", db: Session = Depends(get_db), role: str = Depends(verify_admin_role)):
@@ -392,7 +409,7 @@ def publish_catalog(user_id: str = "admin", db: Session = Depends(get_db), role:
             
         catalog = {
             "sections": catalog_by_section,
-            "published_at": datetime.utcnow().isoformat()
+            "published_at": datetime.now(timezone.utc).isoformat()
         }
         
         # Atomic write
@@ -439,7 +456,6 @@ def get_publish_runs(limit: int = 20, db: Session = Depends(get_db), _: str = De
 
 # --- VIEWER ENDPOINTS ---
 
-from fastapi.responses import JSONResponse
 
 @app.get("/catalog")
 def get_catalog():
@@ -470,9 +486,7 @@ def search_catalog(q: str = "", category: str = "", language: str = "", section:
                 
             # Filter matches inside show
             show_matches = False
-            if q and q.lower() in show.get("title", "").lower():
-                show_matches = True
-            elif q and q.lower() in show.get("category", "").lower():
+            if q and q.lower() in show.get("title", "").lower() or q and q.lower() in show.get("category", "").lower():
                 show_matches = True
                 
             matching_episodes = []
@@ -484,9 +498,8 @@ def search_catalog(q: str = "", category: str = "", language: str = "", section:
                         continue
                         
                     # Filter by query
-                    if q:
-                        if not show_matches and q.lower() not in ep.get("title", "").lower():
-                            continue
+                    if q and not show_matches and q.lower() not in ep.get("title", "").lower():
+                        continue
                             
                     matching_episodes.append(ep)
                     

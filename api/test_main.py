@@ -1,18 +1,19 @@
+import io
 import os
 import tempfile
+
 import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-import io
 from PIL import Image
-
-from api.main import app
-from api.database import get_db
-from api.models import Base, Show, Season, Episode, Artwork
-from api.storage import storage, LocalStorageProvider
-
+from sqlalchemy import create_engine
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
+
+from api.database import get_db
+from api.main import app
+from api.models import Artwork, Base, Episode, Season, Show
+from api.storage import storage
 
 # Use an in-memory SQLite database for testing, shared across threads
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
@@ -71,7 +72,7 @@ def test_content_group_uniqueness():
     ep2 = Episode(id="ep2", season_id="se1", title="Ep 1 dup", content_group="cg1", language="en")
     db.add(ep2)
     
-    with pytest.raises(Exception): # SQLAlchemy IntegrityError
+    with pytest.raises(IntegrityError): # SQLAlchemy IntegrityError
         db.commit()
 
 

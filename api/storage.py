@@ -3,6 +3,7 @@ import shutil
 from abc import ABC, abstractmethod
 from typing import BinaryIO
 
+
 class StorageProvider(ABC):
     @abstractmethod
     def save_file(self, file_obj: BinaryIO, destination_path: str) -> str:

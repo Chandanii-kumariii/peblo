@@ -1,11 +1,11 @@
+
 from pydantic import BaseModel
-from typing import List, Optional
-from datetime import datetime
+
 
 class ArtworkBase(BaseModel):
-    poster_path: Optional[str] = None
-    thumbnail_path: Optional[str] = None
-    banner_path: Optional[str] = None
+    poster_path: str | None = None
+    thumbnail_path: str | None = None
+    banner_path: str | None = None
 
 class ArtworkResponse(ArtworkBase):
     id: int
@@ -19,14 +19,14 @@ class EpisodeBase(BaseModel):
     title: str
     content_group: str
     language: str
-    duration: Optional[int] = None
+    duration: int | None = None
 
 class EpisodeCreate(EpisodeBase):
     season_id: str
 
 class EpisodeResponse(EpisodeBase):
     season_id: str
-    artwork: Optional[ArtworkResponse] = None
+    artwork: ArtworkResponse | None = None
 
     class Config:
         orm_mode = True
@@ -40,7 +40,7 @@ class SeasonCreate(SeasonBase):
 
 class SeasonResponse(SeasonBase):
     show_id: str
-    episodes: List[EpisodeResponse] = []
+    episodes: list[EpisodeResponse] = []
 
     class Config:
         orm_mode = True
@@ -48,7 +48,7 @@ class SeasonResponse(SeasonBase):
 class ShowBase(BaseModel):
     id: str
     title: str
-    section: Optional[str] = None
+    section: str | None = None
     category: str
     status: str = "draft"
 
@@ -56,7 +56,7 @@ class ShowCreate(ShowBase):
     pass
 
 class ShowResponse(ShowBase):
-    seasons: List[SeasonResponse] = []
+    seasons: list[SeasonResponse] = []
 
     class Config:
         orm_mode = True
